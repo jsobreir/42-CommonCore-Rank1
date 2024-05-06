@@ -4,7 +4,7 @@ CC = cc
 
 NAME = libftprintf.a
 
-SRC	 = ft_printf.c put_printf.c utils.c put_hexptr.c
+SRC	 = ft_printf.c put_printf.c put_hexptr.c
 
 OBJ = $(SRC:.c=.o)
 

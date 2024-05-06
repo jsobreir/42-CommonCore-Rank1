@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:28:32 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/05 20:07:43 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/05/06 16:26:31 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (len);
 }
-
+// int main (void)
+// {
+// 	printf("\n%d", ft_printf("%d", -87));
+// }
 // int	main()
 // {
 // 	char c = 'k'; // %c
@@ -74,11 +77,18 @@ int	ft_printf(const char *format, ...)
 // 	// %%
 // 	int i;
 // 	printf("Printf replica:\n");
-// 	i = ft_printf("| TEST TEXT |\n| Single Char: %c |\n| String: %s |\n| Pointer Adress: %p |\n| Decimal: %d |\n| Integer %i |\n| Unsign deci: %u |\n| HexLower: %x |\n| HexUpper: %X |\n| Percentage sign: %% |\n", c, str, var, nbr, nbr, nbrr, b, b);
+// 	i = ft_printf("| TEST TEXT |\n| Single Char: %c |\n| String:
+//  %s |\n| Pointer Adress: %p |\n| Decimal: %d |\n| Integer %i 
+// |\n| Unsign deci: %u |\n| HexLower: %x |\n| HexUpper: %X |\n| 
+// Percentage sign: %% |\n", c, str, var, nbr, nbr, nbrr, b, b);
 // 	printf("\nReturn Value: %d", i);
 // 	///////////////////////////////
 // 	printf("\nPrintf original:\n");
-// 	i = printf("| TEST TEXT |\n| Single Char: %c |\n| String: %s |\n| Pointer Adress: %p |\n| Decimal: %d |\n| Integer %i |\n| Unsign deci: %u |\n| HexLower: %x |\n| HexUpper: %X |\n| Percentage sign: %% |\n", c, str, var, nbr, nbr, nbrr, b, b);
+// 	i = printf("| TEST TEXT |\n| Single Char: 
+// %c |\n| String: %s |\n| Pointer Adress: %p |\n| Decimal: 
+// %d |\n| Integer %i |\n| Unsign deci: %u |\n| HexLower: %x |\n| 
+// HexUpper: %X |\n| Percentage sign: %% |\n", c, str, var, nbr, 
+// nbr, nbrr, b, b);
 // 	printf("\nReturn Value: %d", i);
 // 	return (0);
 // }
