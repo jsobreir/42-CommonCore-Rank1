@@ -1,24 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/14 15:53:53 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/05/14 16:00:38 by jsobreir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-char *ft_read_file(int fd, char *stash)
+char	*ft_read_file(int fd, char *stash)
 {
-    char *buffer;
-    int bytes_read;
+	char	*buffer;
+	int		bytes_read;	
 
-    buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!buffer)
-        return (NULL);
-    bytes_read = 1;
-    while (bytes_read)
-    {
-        bytes_read = read(fd, buffer, BUFFER_SIZE);
-        if (bytes_read < 0)
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
+		return (NULL);
+	bytes_read = 1;
+	while (bytes_read)
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read < 0)
 			return (NULL);
-        buffer[bytes_read] = '\0';
-    	stash = ft_strjoin(stash, buffer);
-        if (ft_strchr(buffer, '\n'))
-            break;
-    }
+		buffer[bytes_read] = '\0';
+		stash = ft_strjoin(stash, buffer);
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
 	if (*stash == '\0' || bytes_read < 0)
 	{
 		free(stash);
@@ -26,7 +38,7 @@ char *ft_read_file(int fd, char *stash)
 		return (NULL);
 	}
 	free(buffer);
-    return (stash);
+	return (stash);
 }
 
 char	*ft_getstash(char *stash)

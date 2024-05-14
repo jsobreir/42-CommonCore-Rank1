@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/14 15:58:09 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/05/14 16:01:41 by jsobreir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(char *str)
@@ -12,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_strclen(char *str, char c)
+int	ft_strclen(char *str, char c)
 {
 	int		i;
 
@@ -50,17 +62,9 @@ char	*ft_strjoin(char *dest, char *src)
 	temp = ret;
 	tmp_dest = dest;
 	while (dest != NULL && *dest)
-	{
-		*ret = *dest;
-		ret++;
-		dest++;
-	}
+		*(ret++) = *(dest++);
 	while (*src)
-	{
-		*ret = *src;
-		ret++;
-		src++;
-	}
+		*(ret++) = *(src++);
 	*ret = '\0';
 	if (tmp_dest)
 		free(tmp_dest);
@@ -71,7 +75,7 @@ char	*ft_strndup(char *str, int n)
 {
 	char	*ret;
 	int		i;
-	
+
 	i = 0;
 	ret = malloc((n + 1) * sizeof(char));
 	if (!ret)
@@ -84,35 +88,3 @@ char	*ft_strndup(char *str, int n)
 	ret[i] = '\0';
 	return (ret);
 }
-
-void		*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*dest;
-	int		n;
-
-	if (!nmemb && !size && nmemb > (2147483647 / size))
-		return (NULL);
-	dest = malloc(size * nmemb);
-	if (!dest)
-		return (NULL);
-	n = nmemb * size;
-	while (n > 0)
-	{
-		*((char *)dest++) = 0;
-		n--;
-	}
-	return (dest);
-}
-
-
-// int main(void)
-// {
-	// char *str1 = malloc(5);
-	// char *tmp = str1;
-	// char *buf = "Joao";
-	// while (*buf)
-		// *(str1++) = *(buf++);
-// 
-	// char *str2 = "ao";
-	// printf("%s", ft_strjoin(tmp, str2));
-// }
