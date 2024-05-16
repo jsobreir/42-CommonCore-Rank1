@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:53:53 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/14 16:00:38 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:45:27 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ char	*ft_read_file(int fd, char *stash)
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (bytes_read)
+	while (bytes_read && BUFFER_SIZE >= 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read < 0)
-			return (NULL);
+			return (free(buffer), NULL);
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
 		if (ft_strchr(buffer, '\n'))
@@ -61,8 +61,10 @@ char	*get_next_line(int fd)
 	char			*line;
 	int				line_len;
 
-	if (fd < 0)
+	if (fd < 0 && fd > 4096)
 		return (NULL);
+	if (!stash)
+		stash = NULL;
 	stash = ft_read_file(fd, stash);
 	if (!stash)
 		return (NULL);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 15:58:09 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/16 12:55:11 by jsobreir         ###   ########.fr       */
+/*   Created: 2024/05/14 19:56:45 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/05/16 12:38:14 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ size_t	ft_strlen(char *str)
 
 int	ft_strclen(char *str, char c)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i] != '\0' && str[i] != c)
+	while (str != NULL && str[i] != '\0' && str[i] != c)
 		i++;
 	if (i != 0 && str[i] == '\0')
 		i--;
@@ -42,49 +42,48 @@ char	*ft_strchr(char *str, char c)
 		str++;
 	if (*str == c || !c)
 		return (str);
-	return (0);
+	return (NULL);
 }
 
 char	*ft_strjoin(char *dest, char *src)
 {
+	char	*temp;
+	char	*dest_temp;
 	char	*ret;
 	int		len;
-	char	*temp;
-	char	*tmp_dest;
 
 	len = ft_strlen(dest) + ft_strlen(src);
 	ret = malloc((len + 1) * sizeof(char));
 	if (!ret)
-	{
-		free(dest);
 		return (NULL);
-	}
+	dest_temp = dest;
 	temp = ret;
-	tmp_dest = dest;
 	while (dest != NULL && *dest)
 		*(ret++) = *(dest++);
 	while (*src)
 		*(ret++) = *(src++);
 	*ret = '\0';
-	if (tmp_dest)
-		free(tmp_dest);
+	if (dest_temp)
+		free(dest_temp);
 	return (temp);
 }
 
 char	*ft_strndup(char *str, int n)
 {
 	char	*ret;
-	int		i;
+	char	*temp;
 
-	i = 0;
 	ret = malloc((n + 1) * sizeof(char));
 	if (!ret)
 		return (NULL);
-	while (str[i] != '\0' && i < n)
+	temp = ret;
+	while (str != NULL && *str && n > 0)
 	{
-		ret[i] = str[i];
-		i++;
+		*ret = *str;
+		str++;
+		ret++;
+		n--;
 	}
-	ret[i] = '\0';
-	return (ret);
+	*ret = '\0';
+	return (temp);
 }
