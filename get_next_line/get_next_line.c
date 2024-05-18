@@ -61,7 +61,7 @@ char	*get_next_line(int fd)
 	char			*line;
 	int				line_len;
 
-	if (fd < 0 && fd > 4096)
+	if (fd < 0 || fd > 4096)
 		return (NULL);
 	if (!stash)
 		stash = NULL;
