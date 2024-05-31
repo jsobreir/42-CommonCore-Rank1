@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 18:46:33 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/16 12:10:12 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:31:05 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,6 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
-# endif
-
-# ifndef RONLY
-#  define RONLY
 # endif
 
 # define MAX_FD 4096

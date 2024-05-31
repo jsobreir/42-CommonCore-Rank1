@@ -6,11 +6,11 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:56:45 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/16 12:38:14 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:31:22 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(char *str)
 {
