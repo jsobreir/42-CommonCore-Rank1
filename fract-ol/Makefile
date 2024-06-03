@@ -2,7 +2,7 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = mlx_linux
 MLX = $(MLX_DIR)/libmlx_Linux.a
-SRC = fractol.c init.c render.c events.c
+SRC = fractol.c init.c render.c events.c colors.c
 OBJ = $(SRC:.c=.o)
 NAME = fractol
 FLAGS = -g -Wall -Wextra -Werror -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz

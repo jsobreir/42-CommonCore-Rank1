@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/02 13:21:34 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/06/02 17:42:30 by jsobreir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "fractol.h"
+
+void	put_pixel(int pix, int piy, t_fractal *fractal,int iterations)
+{
+	char	*addr;
+	int		offset;
+	int		color;
+	
+
+	if (iterations < MAX_ITERATIONS / 5)
+		color = WHITE;
+	else if (iterations > MAX_ITERATIONS / 5 && iterations < 2 * MAX_ITERATIONS / 5)
+		color = MAGENTA;
+	else if (iterations > 2 * MAX_ITERATIONS / 5 && iterations < 3 * MAX_ITERATIONS / 5)
+		color = PURPLE;
+	else if (iterations > 3 * MAX_ITERATIONS / 5 && iterations < 4 * MAX_ITERATIONS / 5)
+		color = RED;
+	else
+		color = BLACK;
+	addr = fractal->img.addr;
+	offset = piy * fractal->img.line_len + pix * (fractal->img.bpp/8);
+	addr[offset] = color;
+}
