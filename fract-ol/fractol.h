@@ -8,10 +8,11 @@
 # include "../libft/libft.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include "keys.h"
 
 # define HEIGHT 800
 # define WIDTH 	800
-# define MAX_ITERATIONS 512
+# define MAX_ITERATIONS 42
 
 #define RED           0xFF0000
 #define GREEN         0x00FF00
@@ -74,10 +75,24 @@ typedef struct s_complex
 {
 	double	re;
 	double	im;
+	double	mod_squared;
 }				t_complex;
 
+typedef struct hooks
+{
+	int	scale;	
+}				t_hooks;
 
 // Function Prototypes
-void	fractal_init(t_fractal *fractal);
+void			fractal_init(t_fractal *fractal);
+void			handle_pixel(t_fractal *fractal, int pix, int piy, t_complex *z);
+void			render_fractol(t_fractal *fractal);
+double			map(double unscaled_num, double new_min, double new_max, double old_max);
+t_complex 		square_complex(t_complex *z, t_complex c);
+void			put_pixel(int pix, int piy, t_fractal *fractal,int iterations);
+int			handle_keypress(int keysym, t_fractal *fractal);
+int			ft_strcmp(char *str1, char *str2);
+int			key_hook(int keycode, t_fractal *img);
+int			mouse_hook(int keycode, t_fractal *img);
 
 #endif

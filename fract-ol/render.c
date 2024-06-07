@@ -6,93 +6,82 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:19:59 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/06/02 16:59:52 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/06/07 19:49:04 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double		*map(double max, double min, int dim)
+double		map(double unscaled_num, double new_min, double new_max, double old_max)
 {
-	double diff;
-	double	step;
-	double	*ret;
-	double	*ret_temp;
-
-	diff = max - min;
-	step = diff / dim;
-	ret = malloc(dim * sizeof(double));
-	if (!ret)
-		return (0);
-	ret_temp = ret;
-	while (min<= max)
-	{
-		*ret = min;
-		ret++;
-		min = min + step;
-	}
-	return (ret_temp);
+	return ((new_max - new_min) * unscaled_num / old_max + new_min);
 }
 
-t_complex *square_complex(t_complex *z)
+t_complex square_complex(t_complex *z, t_complex c)
 {
-	double	re;
-	double	im;
-
-	re = z->re;
-	im = z->im;
-	re = re * re - im * im;
-	im = 2 * re * im;
-	return (z);
+	t_complex	result;
+	result.re = z->re * z->re - z->im * z->im + c.re;
+	result.im = 2 * z->re * z->im + c.im;
+	result.mod_squared = result.re * result.re + result.im * result.im;
+	return (result);
 }
 
-void	handle_pixel(t_fractal *fractal, int pix, int piy)
+
+void	handle_pixel(t_fractal *fractal, int pix, int piy, t_complex *z)
 {
-	double		*x;
-	double		*y;
-	t_complex 	*z;
 	int			color;
-	
-	if (fractal->name == "mandelbrot")
+	t_complex	c;
+	int scale = 0.4;
+	z->re = 0;
+	z->im = 0;
+	if (ft_strcmp(fractal->name, "mandelbrot"))
 	{
-			
+		fractal->x_max = scale * 2;
+		fractal->x_min = -scale * 2;
+		fractal->y_max = scale *1;
+		fractal->y_min = -scale * 1;
 	}
 	color = 0;
-	x = map(fractal->x_min, fractal->x_max, WIDTH);
-	y = map(fractal->y_min, fractal->y_max, HEIGHT);
-	while (color < MAX_ITERATIONS)
+	z->re = map(pix, fractal->x_min, fractal->x_max, WIDTH);
+	z->im = map(piy, fractal->y_min, fractal->y_max, HEIGHT);
+	c.re = z->re;
+	c.im = z->im;
+	z->mod_squared = z->re * z->re + z->im * z->im;
+	while (color < MAX_ITERATIONS && z->mod_squared <= 4)
 	{
-		z->re = x[pix];
-		z->im = y[piy];
-		z = square_complex(z);
-		if (z->re > fractal->x_max || z->im > fractal->y_max
-			|| z->re < fractal->x_min || z->im < fractal->y_min)
-			break;
+		*z = square_complex(z, c);
+		color++;
 	}
-	// z**2 = (re + im*i)*(re + im*i) = re**2 + 2*re*im*i - im**2
-	color_pixel(pix, piy, color); // TODO
+	// printf("%f + %fi = %f : %d\n", x[pix], y[piy], z->mod_squared, color);
+	put_pixel(pix, piy, fractal, color);
 }
 
 void	render_fractol(t_fractal *fractal)
 {
 	int			x;
 	int			y;
-	char		*addr;
 	t_img		*img_data;
+	t_complex 	z;
 
-	img_data = mlx_get_data_addr(img_data->img, img_data->bpp, img_data->line_len, img_data->endian);
-	
-	
-	while (++y < HEIGHT)
+	img_data = &fractal->img;
+	if (img_data == NULL)
 	{
-		while (++x < WIDTH)
+		fprintf(stderr, "Error: Image data address is NULL\n");
+		return;
+	}
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
 		{
-			handle_pixel(fractal, x, y);
-			
+			handle_pixel(fractal, x, y, &z);
 			x++;
 		}
 		y++;
 	}
+	mlx_put_image_to_window(fractal->mlx, fractal->mlx_win,
+		img_data->img, 0, 0);
 }
 /*
 int main (void)
