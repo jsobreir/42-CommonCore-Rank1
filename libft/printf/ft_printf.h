@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 19:07:57 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/06/25 15:49:50 by jsobreir         ###   ########.fr       */
+/*   Created: 2024/05/05 17:28:43 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/05/06 16:25:00 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#ifndef		KEYS_H
-# define	KEYS_H
+# include "stdarg.h"
+# include <unistd.h>
+# include <stdio.h>
 
-# define KEY_ESC 65307
-# define MOUSE_WHEEL_UP 5
-# define MOUSE_WHEEL_DOWN 4
-# define MOUSE_LEFT 1
-# define K_AR_L 65361
-# define K_AR_R 65363
-# define K_AR_U 65362
-# define K_AR_D 65364
+int		ft_printf(const char *format, ...);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putnbr(int nbr);
+int		ft_putpointer(unsigned long nbr);
+int		ft_puthexadecimal(unsigned long nbr, char *base);
+int		ft_putunsignednbr(unsigned int nbr);
 
-# endif
+#endif

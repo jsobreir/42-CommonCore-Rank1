@@ -56,20 +56,6 @@ typedef struct s_img {
  ~ Image
  ~ Hooks Value
 */
-typedef struct s_fractal
-{
-	char	*name;
-	// MLX
-	void	*mlx; // mlx_init()
-	void	*mlx_win;
-	// Image
-	t_img	img;
-	// Fractal specific mathematical limits
-	double	x_min;
-	double	x_max;
-	double	y_min;
-	double	y_max;
-}				t_fractal;
 
 typedef struct s_complex
 {
@@ -78,21 +64,49 @@ typedef struct s_complex
 	double	mod_squared;
 }				t_complex;
 
-typedef struct hooks
+typedef struct s_fractal
 {
-	int	scale;	
-}				t_hooks;
+	char		*name;
+	// MLX
+	void		*mlx; // mlx_init()
+	void		*mlx_win;
+	// Image
+	t_img		img;
+	t_complex	z;
+	int			x;
+	int			y;
+	int			new_x;
+	int			new_y;
+	// Fractal specific mathematical limits
+	double		x_min;
+	double		x_max;
+	double		y_min;
+	double		y_max;
+	double		scale;
+	int			mouse_pressed;
+	double		disp_x;
+	double		disp_y;
+}				t_fractal;
 
 // Function Prototypes
 void			fractal_init(t_fractal *fractal);
-void			handle_pixel(t_fractal *fractal, int pix, int piy, t_complex *z);
+void			handle_pixel(t_fractal *fractal, int pix, int piy);
 void			render_fractol(t_fractal *fractal);
-double			map(double unscaled_num, double new_min, double new_max, double old_max);
-t_complex 		square_complex(t_complex *z, t_complex c);
+// double			map(double unscaled_num, double new_min, double new_max, double old_max, double disp);
+// static t_complex 		square_complex(t_complex *z, t_complex *c);
 void			put_pixel(int pix, int piy, t_fractal *fractal,int iterations);
-int			handle_keypress(int keysym, t_fractal *fractal);
-int			ft_strcmp(char *str1, char *str2);
-int			key_hook(int keycode, t_fractal *img);
-int			mouse_hook(int keycode, t_fractal *img);
+int				handle_keypress(int keysym, t_fractal *fractal);
+int				ft_strcmp(char *str1, char *str2);
+int				key_hook(int keycode, t_fractal *img);
+int				close_window(int keycode, t_fractal *img);
+int				mouse_hooks(int keycode, int x, int y, t_fractal *fractal);
+int				mouse_released(int keycode, int x, int y, t_fractal *fractal);
+int 			mouse_pressed(int keycode, int x, int y, t_fractal *fractal);
+int				move(int keycode, t_fractal *fractal);
+int				key_hooks (int keycode, t_fractal *fractal);
+void			init_fractal_dimensions(t_fractal *fractal, char **argv);
+int				mandelbrot(t_fractal *fractal, int pix, int piy);
+int				julia(t_fractal *fractal, int pix, int piy);
+
 
 #endif

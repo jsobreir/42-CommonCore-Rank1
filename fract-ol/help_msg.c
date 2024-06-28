@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys.h                                             :+:      :+:    :+:   */
+/*   help_msg.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 19:07:57 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/06/25 15:49:50 by jsobreir         ###   ########.fr       */
+/*   Created: 2024/06/27 17:22:36 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/06/27 17:39:01 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include "fractol.h"
 
-#ifndef		KEYS_H
-# define	KEYS_H
+// void	clean_exit(t_fractal *fractal)
+// {
+// 	if (fractal->mlx)
+		
+// 	exit(EXIT_FAILURE);
+// }
 
-# define KEY_ESC 65307
-# define MOUSE_WHEEL_UP 5
-# define MOUSE_WHEEL_DOWN 4
-# define MOUSE_LEFT 1
-# define K_AR_L 65361
-# define K_AR_R 65363
-# define K_AR_U 65362
-# define K_AR_D 65364
-
-# endif
+// void	wrong_format(void)
+// {
+// 	ft_putstr_fd("Error! Wrong format. Please specify the fractal name followed by the optional parameters.\n", 1)
+// 	exit
+// }
