@@ -6,51 +6,44 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:19:59 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/06/27 16:29:56 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/04 15:58:33 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int		color_rgb(int n, int n_max)
-{
-	double	t;
-	int		r;
-	int		g;
-	int		b;
-
-	if (n == n_max)
-		return (0);
-	t = (double)n / (double)n_max;
-	r = (int)(9 * (1 - t) * t * t * t * 255);
-	g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-	b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-	return (r << 16 | g << 8 | b);
-}
-
 void	put_pixel(int pix, int piy, t_fractal *fractal, int iterations)
 {
-	char		*addr;
-	int			offset;
-	int			color;
+	char	*addr;
+	int		offset;
+	int		color;
 
-	color = color_rgb(iterations, MAX_ITERATIONS);
+	if (ft_strncmp(fractal->color_set, "greyscale", 9) == 0)
+		color = greyscale(iterations);
+	else if (ft_strncmp(fractal->color_set, "rainbow", 7) == 0)
+		color = rainbow(iterations);
+	else if (ft_strncmp(fractal->color_set, "heatmap", 7) == 0)
+		color = heatmap(iterations);
+	else if (ft_strncmp(fractal->color_set, "psychadelic", 11) == 0)
+		color = psychadelic(iterations);
+	else
+		color = 0;
 	addr = fractal->img.addr;
 	offset = piy * fractal->img.line_len + pix * (fractal->img.bpp / 8);
-	addr[offset] = color & 0xFF; // blue
-	addr[offset + 1] = (color >> 8) & 0xFF; // green
-	addr[offset + 2] = (color >> 16) & 0xFF; // red
+	addr[offset] = color & 0xFF;
+	addr[offset + 1] = (color >> 8) & 0xFF;
+	addr[offset + 2] = (color >> 16) & 0xFF;
 }
 
 void	handle_pixel(t_fractal *fractal, int pix, int piy)
 {
 	int			color;
 	t_complex	*z;
-	
+
 	z = &fractal->z;
-	if (ft_strcmp(fractal->name, "mandelbrot"))
+	if (ft_strncmp(fractal->name, "mandelbrot", 10) == 0)
 		color = mandelbrot(fractal, pix, piy);
-	else if (ft_strcmp(fractal->name, "julia"))
+	else if (ft_strncmp(fractal->name, "julia", 5) == 0)
 		color = julia(fractal, pix, piy);
 	else
 		return ;
@@ -59,9 +52,9 @@ void	handle_pixel(t_fractal *fractal, int pix, int piy)
 
 void	render_fractol(t_fractal *fractal)
 {
-	int			x;
-	int			y;
-	
+	int	x;
+	int	y;
+
 	mlx_clear_window(fractal->mlx, fractal->mlx_win);
 	y = 0;
 	while (y < HEIGHT)

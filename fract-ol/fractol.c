@@ -12,24 +12,31 @@
 
 #include "fractol.h"
 
-void	setup_hooks(t_fractal *fractal)
+static void	setup_hooks(t_fractal *fractal)
 {
-	mlx_key_hook(fractal->mlx_win, key_hooks, fractal);
-	// mlx_hook(fractal->mlx_win, 4, 1L<<2, mouse_pressed, fractal);
-    // mlx_hook(fractal->mlx_win, 5, 1L<<3, mouse_released, fractal);
-	mlx_mouse_hook(fractal->mlx_win, mouse_hooks, fractal);
+	mlx_hook(fractal->mlx_win, KeyPress, (1L << 0), on_key_press, fractal);
+	mlx_hook(fractal->mlx_win, KeyRelease, (1L << 1), on_key_release, fractal);
+	mlx_hook(fractal->mlx_win, ButtonPress, (1L << 2), mouse_hooks, fractal);
+	mlx_hook(fractal->mlx_win, 17, 0, clean_exit, fractal);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_fractal 	fractal;
+	t_fractal	fractal;
 
 	fractal_init(&fractal);
 	if (argc < 2)
-		return(0);
+		wrong_format(&fractal);
 	fractal.name = argv[1];
+	if (!fractal.name)
+		wrong_format(&fractal);
+	if (ft_strncmp(fractal.name, "mandelbrot", 10) != 0 &&
+		ft_strncmp(fractal.name, "julia", 5) != 0)
+		wrong_format(&fractal);
 	init_fractal_dimensions(&fractal, argv);
 	render_fractol(&fractal);
 	setup_hooks(&fractal);
+	mlx_loop_hook(fractal.mlx, fluid_hooks, &fractal);
 	mlx_loop(fractal.mlx);
+	return (0);
 }

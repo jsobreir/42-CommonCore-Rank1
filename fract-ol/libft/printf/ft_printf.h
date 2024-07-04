@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 17:28:43 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/06 16:25:00 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/04 16:54:54 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int		ft_putnbr(int nbr);
 int		ft_putpointer(unsigned long nbr);
 int		ft_puthexadecimal(unsigned long nbr, char *base);
 int		ft_putunsignednbr(unsigned int nbr);
+int		ft_putfloat(double number, int precision);
 
 #endif

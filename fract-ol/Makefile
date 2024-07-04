@@ -2,17 +2,20 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX_DIR = mlx_linux
 MLX = $(MLX_DIR)/libmlx_Linux.a
-SRC = fractol.c init.c render.c events.c hooks.c utils.c sets.c help_msg.c
+
+SRC = fractol.c init.c render.c hooks.c sets.c help_msg.c color.c
 OBJ = $(SRC:.c=.o)
 NAME = fractol
-FLAGS = -Wall -Wextra -Werror -g -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz
+# -L flag indicates which directories need to be searched for libraries (.a files)
+# -I flad adds a directory that needs to be searched for Header files (.h files)
+FLAGS = -Wall -Wextra -Werror -g -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm -lz -L$(LIBFT_DIR) -lft
 CC = cc
 HEADER = fractol.h
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(MLX) $(LIBFT)
-	$(CC) $(OBJ) -o $(NAME) $(FLAGS) -L$(LIBFT_DIR) -lft
+$(NAME): $(MLX) $(LIBFT) $(OBJ)
+	$(CC) $(OBJ) -o $(NAME) $(FLAGS)
 
 # Compile each c file into o file (-o specifies name of output file, -c tells compiler to compile src file into obj but not to link it)
 %.o: %.c $(HEADER)
