@@ -6,7 +6,13 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 16:07:14 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/07/03 16:07:15 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/04 20:10:27 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pipex.h"
+
+void parse_files()
+{
+	
+}

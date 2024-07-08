@@ -6,35 +6,23 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 15:42:29 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/07/03 17:30:57 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/04 20:13:16 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include <stdio.h>
 
 // ./pipex infile "command_1" "command_2" outfile 
 int	main(int argc, char **argv)
 {
+	t_args	args;
 	
-	// init_pipex();
-	
-	// check_args();
-	if (argc < 5)
-		parse_err();
-	// parse_cmds();
-	char	**commands;
-	
-	commands[0] = argv[2];
-	commands[1] = argv[3];
-	// parse_args();
+	init();
+	parse_files();
 	int	fd[2];
 	int	pid;
-	char	**files;
-	
-	files[0] = argv[1];
-	files[1] = argv[4];
-	
-	// ft_exec();
+
 	if (pipe(fd) == -1)
 		return (0);
 	pid = fork();
@@ -42,16 +30,18 @@ int	main(int argc, char **argv)
 		return (0);
 	if (pid == 0)
 	{
-		// Child process
 		dup2(fd[1], STDOUT_FILENO);
-		execve(path, commands, NULL);
+		dprintf(STDOUT_FILENO, "r");
+		close(fd[0]);
 	}
 	else
 	{
+		char	buffer[1];
+		
 		close(fd[1]);
-		dup2(fd);
+		dup2(fd[0], STDIN_FILENO);
+		close(fd[0]);
+		read(STDIN_FILENO, buffer, 1);
+		write(STDOUT_FILENO, buffer, 1);
 	}
-		
-		
-	// cleanup();
 }

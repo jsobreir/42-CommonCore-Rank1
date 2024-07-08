@@ -1,6 +1,6 @@
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-MLX_DIR = mlx_linux
+MLX_DIR = minilibx-linux
 MLX = $(MLX_DIR)/libmlx_Linux.a
 
 SRC = fractol.c init.c render.c hooks.c sets.c help_msg.c color.c
@@ -27,6 +27,9 @@ $(LIBFT):
 $(MLX):
 	$(MAKE) -C $(MLX_DIR)
 
+clone:
+	git clone https://github.com/42Paris/minilibx-linux.git
+
 clean:
 	rm -rf $(OBJ)
 	$(MAKE) -C $(LIBFT_DIR) clean
@@ -39,4 +42,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re clone

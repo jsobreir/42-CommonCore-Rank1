@@ -6,17 +6,21 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 11:40:14 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/07/04 16:05:33 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/08 12:25:09 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	zoom(t_fractal *fractal, double scale)
+static int	zoom(t_fractal *fractal, double scale, int keycode)
 {
 	double	center_x;
 	double	center_y;
 
+	if (keycode == MOUSE_WHEEL_DOWN)
+		scale /= 1.1;
+	else if (keycode == MOUSE_WHEEL_UP)
+		scale *= 1.1;
 	center_x = fractal->x_max - fractal->x_min;
 	center_y = fractal->y_max - fractal->y_min;
 	fractal->x_max = fractal->x_max + (center_x - scale * center_x) / 2;
@@ -31,23 +35,23 @@ static int	move(int keycode, t_fractal *fractal, double distance)
 	double	sensitivity;
 
 	sensitivity = 0.1;
-	if (keycode == K_AR_D) // Assuming down
+	if (keycode == K_AR_D)
 		fractal->disp_y += (sensitivity * distance);
-	else if (keycode == K_AR_U) // Assuming up
+	else if (keycode == K_AR_U)
 		fractal->disp_y -= (sensitivity * distance);
-	else if (keycode == K_AR_R) // Assuming right
+	else if (keycode == K_AR_R)
 		fractal->disp_x += (sensitivity * distance);
-	else if (keycode == K_AR_L) // Assuming left
+	else if (keycode == K_AR_L)
 		fractal->disp_x -= (sensitivity * distance);
 	return (0);
 }
 
-static int	key_hooks(int keycode, t_fractal *fractal)
+int	key_hooks(int keycode, t_fractal *fractal)
 {
 	if (keycode == KEY_ESC)
 		clean_exit(fractal);
-	else if (keycode == K_AR_D || keycode == K_AR_U ||
-			keycode == K_AR_L || keycode == K_AR_R)
+	else if (keycode == K_AR_D || keycode == K_AR_U
+		|| keycode == K_AR_L || keycode == K_AR_R)
 		move(keycode, fractal, 1);
 	else if (keycode == K_1)
 		fractal->name = "mandelbrot";
@@ -68,25 +72,6 @@ static int	key_hooks(int keycode, t_fractal *fractal)
 		fractal->y_min = -2;
 	}
 	render_fractol(fractal);
-	return (0);
-}
-
-int	on_key_press(int keycode, t_fractal *fractal)
-{
-	if (keycode == K_J)
-		fractal->j_pressed = 1;
-	else if (keycode == K_K)
-		fractal->k_pressed = 1;
-	key_hooks(keycode, fractal);
-	return (0);
-}
-
-int	on_key_release(int keycode, t_fractal *fractal)
-{
-	if (keycode == K_J)
-		fractal->j_pressed = 0;
-	else if (keycode == K_K)
-		fractal->k_pressed = 0;
 	return (0);
 }
 
@@ -111,38 +96,6 @@ int	fluid_hooks(t_fractal *fractal)
 	return (0);
 }
 
-static int	color_picker(t_fractal *fractal, int keycode)
-{
-	char	*set;
-
-	set = fractal->color_set;
-	if (keycode == MOUSE_LEFT &&
-		ft_strncmp(fractal->color_set, "greyscale", 9) == 0)
-	{
-		fractal->color_set = "rainbow";
-		ft_printf("Energy color palette set.\n");
-	}
-	else if (keycode == MOUSE_LEFT &&
-		ft_strncmp(fractal->color_set, "rainbow", 7) == 0)
-	{
-		fractal->color_set = "heatmap";
-		ft_printf("Bloody color palette set.\n");
-	}
-	else if (keycode == MOUSE_LEFT &&
-		ft_strncmp(fractal->color_set, "heatmap", 7) == 0)
-	{
-		fractal->color_set = "psychadelic";
-		ft_printf("Gold color palette set.\n");
-	}
-	else if (keycode == MOUSE_LEFT &&
-		ft_strncmp(fractal->color_set, "psychadelic", 11) == 0)
-	{
-		fractal->color_set = "greyscale";
-		ft_printf("Grey color palette set.\n");
-	}
-	return (0);
-}
-
 int	mouse_hooks(int keycode, int x, int y, t_fractal *fractal)
 {
 	double	distance_x;
@@ -152,10 +105,7 @@ int	mouse_hooks(int keycode, int x, int y, t_fractal *fractal)
 	{
 		x -= WIDTH / 2;
 		y -= HEIGHT / 2;
-		if (keycode == MOUSE_WHEEL_DOWN)
-			zoom(fractal, fractal->scale / 1.1);
-		else if (keycode == MOUSE_WHEEL_UP)
-			zoom(fractal, fractal->scale * 1.1);
+		zoom(fractal, fractal->scale, keycode);
 		distance_x = (fractal->x_max - fractal->x_min) * (double)x / WIDTH;
 		distance_y = (fractal->y_max - fractal->y_min) * (double)y / HEIGHT;
 		if (x > 0)
@@ -168,7 +118,7 @@ int	mouse_hooks(int keycode, int x, int y, t_fractal *fractal)
 			move(K_AR_U, fractal, -distance_y);
 	}
 	if (keycode == MOUSE_LEFT)
-		color_picker(fractal, keycode);
+		color_picker(fractal);
 	render_fractol(fractal);
 	return (0);
 }

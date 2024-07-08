@@ -6,11 +6,38 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 18:31:00 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/07/04 16:58:00 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:56:23 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	color_picker(t_fractal *fractal)
+{
+	char	*set;
+
+	set = fractal->color_set;
+	if (ft_strncmp(fractal->color_set, "greyscale", 9) == 0)
+	{
+		fractal->color_set = "rainbow";
+		ft_printf("Energy color palette set.\n");
+	}
+	else if (ft_strncmp(fractal->color_set, "rainbow", 7) == 0)
+	{
+		fractal->color_set = "heatmap";
+		ft_printf("Bloody color palette set.\n");
+	}
+	else if (ft_strncmp(fractal->color_set, "heatmap", 7) == 0)
+	{
+		fractal->color_set = "psychadelic";
+		ft_printf("Gold color palette set.\n");
+	}
+	else if (ft_strncmp(fractal->color_set, "psychadelic", 11) == 0)
+	{
+		fractal->color_set = "greyscale";
+		ft_printf("Grey color palette set.\n");
+	}
+}
 
 int	greyscale(int n)
 {

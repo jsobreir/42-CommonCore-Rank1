@@ -6,16 +6,22 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:49:43 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/07/04 15:56:49 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/07/08 11:52:48 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static double	map(double unscaled_num, double new_min, double new_max,
-		double old_max, double disp)
+static double	mapx(double unscaled_num, double new_min, double new_max,
+	double disp)
 {
-	return ((new_max - new_min) * unscaled_num / old_max + new_min + disp);
+	return ((new_max - new_min) * unscaled_num / WIDTH + new_min + disp);
+}
+
+static double	mapy(double unscaled_num, double new_min, double new_max,
+	double disp)
+{
+	return ((new_max - new_min) * unscaled_num / HEIGHT + new_min + disp);
 }
 
 static t_complex	square_complex(t_complex *z, t_complex *c)
@@ -35,10 +41,8 @@ int	mandelbrot(t_fractal *fractal, int pix, int piy)
 	double		scale;
 
 	scale = fractal->scale;
-	fractal->z.re = map(pix, fractal->x_min, fractal->x_max,
-			WIDTH, fractal->disp_x);
-	fractal->z.im = map(piy, fractal->y_min, fractal->y_max,
-			HEIGHT, fractal->disp_y);
+	fractal->z.re = mapx(pix, fractal->x_min, fractal->x_max, fractal->disp_x);
+	fractal->z.im = mapy(piy, fractal->y_min, fractal->y_max, fractal->disp_y);
 	c.re = fractal->z.re;
 	c.im = fractal->z.im;
 	fractal->z.mod_squared = fractal->z.re * fractal->z.re
@@ -61,8 +65,8 @@ int	julia(t_fractal *fractal, int pix, int piy)
 
 	c = &fractal->z;
 	scale = fractal->scale;
-	z.re = map(pix, fractal->x_min, fractal->x_max, WIDTH, fractal->disp_x);
-	z.im = map(piy, fractal->y_min, fractal->y_max, HEIGHT, fractal->disp_y);
+	z.re = mapx(pix, fractal->x_min, fractal->x_max, fractal->disp_x);
+	z.im = mapy(piy, fractal->y_min, fractal->y_max, fractal->disp_y);
 	z.mod_squared = z.re * z.re + z.im * z.im;
 	color = 0;
 	while (color < MAX_ITERATIONS && z.mod_squared <= 4)

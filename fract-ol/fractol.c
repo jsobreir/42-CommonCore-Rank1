@@ -12,6 +12,25 @@
 
 #include "fractol.h"
 
+static int	on_key_press(int keycode, t_fractal *fractal)
+{
+	if (keycode == K_J)
+		fractal->j_pressed = 1;
+	else if (keycode == K_K)
+		fractal->k_pressed = 1;
+	key_hooks(keycode, fractal);
+	return (0);
+}
+
+static int	on_key_release(int keycode, t_fractal *fractal)
+{
+	if (keycode == K_J)
+		fractal->j_pressed = 0;
+	else if (keycode == K_K)
+		fractal->k_pressed = 0;
+	return (0);
+}
+
 static void	setup_hooks(t_fractal *fractal)
 {
 	mlx_hook(fractal->mlx_win, KeyPress, (1L << 0), on_key_press, fractal);
@@ -30,10 +49,10 @@ int	main(int argc, char **argv)
 	fractal.name = argv[1];
 	if (!fractal.name)
 		wrong_format(&fractal);
-	if (ft_strncmp(fractal.name, "mandelbrot", 10) != 0 &&
-		ft_strncmp(fractal.name, "julia", 5) != 0)
+	if (ft_strncmp(fractal.name, "mandelbrot", 10) != 0
+		&& ft_strncmp(fractal.name, "julia", 5) != 0)
 		wrong_format(&fractal);
-	init_fractal_dimensions(&fractal, argv);
+	init_fractal_dimensions(&fractal, argv, argc);
 	render_fractol(&fractal);
 	setup_hooks(&fractal);
 	mlx_loop_hook(fractal.mlx, fluid_hooks, &fractal);

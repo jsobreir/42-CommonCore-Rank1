@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/08 15:57:10 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/07/08 15:59:06 by jsobreir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
-# include "mlx_linux/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../libft/printf/ft_printf.h"
 # include <X11/keysym.h>
@@ -13,12 +25,12 @@
 
 # define HEIGHT 800
 # define WIDTH  800
-# define MAX_ITERATIONS 50
+# define MAX_ITERATIONS 60
 
 typedef struct s_img
 {
-	void	*img;    // Pointer to image struct
-	char	*addr;   // Pointer to the pixels
+	void	*img;
+	char	*addr;
 	int		bpp;
 	int		line_len;
 	int		endian;
@@ -55,14 +67,13 @@ typedef struct s_fractal
 
 // Function Prototypes
 void	fractal_init(t_fractal *fractal);
-void	init_fractal_dimensions(t_fractal *fractal, char **argv);
+void	init_fractal_dimensions(t_fractal *fractal, char **argv, int argc);
 void	wrong_format(t_fractal *fractal);
 void	handle_pixel(t_fractal *fractal, int pix, int piy);
 void	put_pixel(int pix, int piy, t_fractal *fractal, int iterations);
 void	render_fractol(t_fractal *fractal);
+void	color_picker(t_fractal *fractal);
 int		clean_exit(t_fractal *fractal);
-int		on_key_press(int keycode, t_fractal *fractal);
-int		on_key_release(int keycode, t_fractal *fractal);
 int		mouse_hooks(int keycode, int x, int y, t_fractal *fractal);
 int		fluid_hooks(t_fractal *fractal);
 int		mandelbrot(t_fractal *fractal, int pix, int piy);
@@ -71,5 +82,6 @@ int		greyscale(int n);
 int		rainbow(int n);
 int		heatmap(int n);
 int		psychadelic(int n);
+int		key_hooks(int keycode, t_fractal *fractal);
 
 #endif
