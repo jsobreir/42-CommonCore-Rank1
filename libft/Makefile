@@ -7,6 +7,7 @@ SRC	 =	ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c 	\
 	ft_memmove.c ft_putnbr_fd.c  ft_strdup.c  ft_strlen.c  ft_strrchr.c 	\
 	ft_toupper.c ft_calloc.c  ft_isdigit.c ft_memchr.c  ft_memset.c  		\
 	ft_putstr_fd.c  ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_striteri.c	\
+	ft_free_array.c	ft_array_size.c											\
 	get_next_line/get_next_line_bonus.c get_next_line/get_next_line_utils_bonus.c
 OBJ = $(SRC:.c=.o)
 BONUS = ft_lstnew.c	ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
@@ -20,12 +21,13 @@ HEADER = libft.h
 
 all: $(NAME)
 
+# Need to link both the objects and the printf objects to the libft.a archive
+$(NAME): $(PRINTF) $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+	ar rcs $(NAME) $(PRINTF_DIR)/*.o
+
 $(PRINTF):
 	$(MAKE) -C $(PRINTF_DIR)
-
-$(NAME): $(OBJ) $(PRINTF)
-	$(CC) $(FLAGS) -c $(SRC)
-	ar rcs $(NAME) $(OBJ)
 
 main: all
 	$(CC) $(FLAGS) -L. $(NAME)

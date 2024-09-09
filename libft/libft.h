@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:20:00 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/06/27 16:10:30 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/09 10:44:32 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <string.h>
 # include "get_next_line/get_next_line_bonus.h"
+# include "./printf/ft_printf.h"
 
 typedef struct s_list
 {
@@ -73,5 +74,9 @@ void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		ft_lstclear(t_list **lst, void (*del)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
+
+// Extra Functions that I found useful to add //
+void		ft_free_array(char **array, int size);
+int			ft_array_size(char **array);
 
 #endif

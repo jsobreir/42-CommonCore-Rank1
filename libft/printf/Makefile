@@ -2,7 +2,7 @@ FLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
-NAME = libftprintf.a
+NAME = printf.a
 
 SRC	 = ft_printf.c put_printf.c put_hexptr.c
 

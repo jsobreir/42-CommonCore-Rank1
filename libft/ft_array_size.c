@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_array_size.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 15:43:37 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/24 15:13:59 by jsobreir         ###   ########.fr       */
+/*   Created: 2024/09/09 10:37:19 by jsobreir          #+#    #+#             */
+/*   Updated: 2024/09/09 10:38:28 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_array_size(char **array)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+	int	size;
+
+	size = 0;
+	while (*array)
 	{
-		return (1);
+		(*array)++;
+		size++;
 	}
-	else
-		return (0);
+	return (size);
 }
-
-// int	main(void)
-// {
-// 	char c = 'f';
-// 	char d = 'A';
-// 	// char f = 'Z';
-// 	// char z = 'z';
-
-// 	printf("%d", ft_isalpha(c));
-// 	printf("%d", ft_isalpha(d));
-// 	printf("%d", ft_isalpha(' '));
-// 	printf("%d", ft_isalpha(2));
-// }
