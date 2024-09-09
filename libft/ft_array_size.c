@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:37:19 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/09/09 10:38:28 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:08:21 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_array_size(char **array)
 	size = 0;
 	while (*array)
 	{
-		(*array)++;
+		array++;
 		size++;
 	}
 	return (size);

@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:53:53 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/20 17:25:51 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:18:46 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,18 +78,18 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int main(void)
-{
-	int fd;
-	char *line;
+// int main(void)
+// {
+// 	int fd;
+// 	char *line;
 
-	fd = open("example.txt", O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
-	{
-		printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-}
+// 	fd = open("example.txt", O_RDONLY);
+// 	line = get_next_line(fd);
+// 	while (line)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 		line = get_next_line(fd);
+// 	}
+// 	close(fd);
+// }
