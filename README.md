@@ -7,7 +7,11 @@ The start of my journey at 42 Porto.
 | [Libft](libft/Readme.md) | 03/05/2024 | 125 % |
 | [Printf](printf/Readme.md) | 08/05/2024 | 100 % |
 | [Get_next_line](get_next_line/Readme.md) | 18/05/2024 | 112 % |
-| [Born2beRoot](Born2beroot/Readme.md) | 25/05/2024 | 100 % |
+| Born2beRoot | 25/05/2024 | 100 % |
+
+```
+Note: no repository was created for Born2beRoot as this project is about configuring a Virtual Machine.
+```
 
 ## Disclaimer
 At 42 School our projects have to adhere to the 42 Norm of coding standards and good practices. These include:
