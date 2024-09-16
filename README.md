@@ -4,10 +4,10 @@ The start of my journey at 42 Porto.
 ## Rank 00 and Rank 01 Projects
 | Project | Completed Date | Grade |
 | --------------- | --------------- | --------------- |
-| [Libft](../libft/Readme.md) | 03/05/2024 | 125 % |
-| [Printf]() | 08/05/2024 | 100 % |
-| [Get_next_line]() | 18/05/2024 | 112 % |
-| [Born2beRoot]() | 25/05/2024 | 100 % |
+| [Libft](libft/Readme.md) | 03/05/2024 | 125 % |
+| [Printf](printf/Readme.md) | 08/05/2024 | 100 % |
+| [Get_next_line](get_next_line/Readme.md) | 18/05/2024 | 112 % |
+| [Born2beRoot](Born2beroot/Readme.md) | 25/05/2024 | 100 % |
 
 ## Disclaimer
 At 42 School our projects have to adhere to the 42 Norm of coding standards and good practices. These include:
