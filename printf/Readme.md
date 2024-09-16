@@ -26,7 +26,7 @@ To compile a program with the printf library, you can compile the program as fol
 cc ./program_name.c -L/path/to/printf -lft -o program_name
 ```
 
-Alternatively, you can download my [libft](libft) from this repository, which compiles the printf archive into it's own archive, meaning you can use ft_printf with my libft library.
+Alternatively, you can download my [libft](../libft) from this repository, which compiles the printf archive into it's own archive, meaning you can use ft_printf with my libft library.
 
 ## Disclaimer
 At 42 School our projects have to adhere to the 42 Norm of coding standards and good practices. These include:
