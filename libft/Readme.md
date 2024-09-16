@@ -3,6 +3,8 @@ My own very first library.
 
 The goal of this project is to develop a library consisting of basic C functions that can be later used throughout the Common Core.
 
+## Documentation
+
 ## Functions
 | No  | Libc Functions        | No | Additional Functions   | No | Bonus Functions      |
 |-----|-----------------------|----|------------------------|----|----------------------|
@@ -31,7 +33,7 @@ The goal of this project is to develop a library consisting of basic C functions
 | 23  | 'ft_calloc'           |    |                        |    |                      |
 | 24  | 'ft_strdup'           |    |                        |    |                      |
 
-## Instalation and Using
+## Installing and Using
 To download, clone the repository into your device and navigate inside using 'cd libft', then typing 'make' to compile all the functions and generate the library archive, which you will then need to implement these fucntions in your own project.
 
 To compile a program with the libft library, you can compile the program as follows:
