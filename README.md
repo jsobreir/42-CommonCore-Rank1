@@ -1,6 +1,8 @@
 # 42 Porto - Rank 00/01
 The start of my journey at 42 Porto.
 
+The Ranks 00 and 01 consist of creating functions to use throughout the Common Core. There is also a project to create and configure a VM.
+
 ## Rank 00 and Rank 01 Projects
 | Project | Completed Date | Grade |
 | --------------- | --------------- | --------------- |
