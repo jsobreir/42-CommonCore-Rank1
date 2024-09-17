@@ -6,13 +6,16 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:43:21 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/22 11:39:18 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:02:11 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <strings.h>
 
+/// @brief Sets the values stored at a certain block of memory tto zero.
+/// @param s Block of memory passed as a void pointer.
+/// @param n Size of the block of memory.
 void	ft_bzero(void *s, size_t n)
 {
 	int	i;
@@ -25,14 +28,3 @@ void	ft_bzero(void *s, size_t n)
 		n--;
 	}
 }
-
-// int main(void)
-// {
-// 	char str[] = "";
-// 	char str1[] = "";
-
-// 	ft_bzero(str, 0);
-// 	printf("%s\n", str);
-// 	bzero(str1, 0);
-// 	printf("%s", str1);
-// }

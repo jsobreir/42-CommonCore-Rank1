@@ -6,12 +6,15 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:43:29 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/24 12:53:29 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:06:48 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Determines if char is alphanumeric.
+/// @param c Integer representing an ASCII value.
+/// @return Returns 1 if it's alphanumeric. Otherwise, returns 0.
 int	ft_isalnum(int c)
 {
 	if ((c - 'A' <= 25 && c - 'A' >= 0) || (c - 'a' <= 25 && c - 'a' >= 0))
@@ -21,22 +24,3 @@ int	ft_isalnum(int c)
 	else
 		return (0);
 }
-
-// #include <ctype.h>
-
-// int	main(void)
-// {
-// 	char c = 'f';
-// 	char d = 'A';
-// 	// char f = 'Z';
-// 	// char z = 'z';
-
-// 	printf("%d\n", ft_isalnum(c));
-// 	printf("%d\n\n", isalnum(c));
-// 	printf("%d\n", ft_isalnum(d));
-// 	printf("%d\n\n", isalnum(d));
-// 	printf("%d\n", ft_isalnum(' '));
-// 	printf("%d\n\n", isalnum(' '));
-// 	printf("%d\n", ft_isalnum('2'));
-// 	printf("%d\n\n", isalnum('2'));
-// }

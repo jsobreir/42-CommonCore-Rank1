@@ -6,13 +6,17 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 22:32:36 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/24 15:49:26 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:17:52 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
+/// @brief Searches for a char in a string but, contrary to strchr, this function searches 's' in reverse.
+/// @param s String to search.
+/// @param c Char to search for.
+/// @return Pointer to the found char in the string. NULL if not found.
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;

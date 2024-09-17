@@ -6,7 +6,7 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:20:00 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/09/09 10:44:32 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:32:34 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "get_next_line/get_next_line_bonus.h"
 # include "./printf/ft_printf.h"
 
+/// @brief Struct to define the list used in the bonus parts.
 typedef struct s_list
 {
 	void			*content;

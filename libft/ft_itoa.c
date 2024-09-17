@@ -6,12 +6,15 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:44:01 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/23 16:33:15 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:08:45 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Converts numbers to strings.
+/// @param num Int to be converted.
+/// @return Returns a pointer to the string created.
 static int	intlen(int num)
 {
 	int	i;

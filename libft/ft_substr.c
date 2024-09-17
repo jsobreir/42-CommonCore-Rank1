@@ -6,12 +6,17 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 11:58:14 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/03 13:19:43 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:30:26 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Find a substring in a string that starts on element number 'start' and is 'len' bytes long.
+/// @param s String to search in.
+/// @param start Starting element of the substring.
+/// @param len Size of the substring.
+/// @return Pointer to the new string.
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ret;
@@ -33,16 +38,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(ret, str, total_len + 1);
 	return (ret);
 }
-
-// int main (void)
-// {
-// 	printf("%s\n", ft_substr("i just want this part #############", 5, 20));
-// 	// printf("%s\n", ft_substr("kamikaze", 0, 10));
-// 	// printf("%s\n", ft_substr("kamikaze", 1, 2));
-// 	// printf("%s\n", ft_substr("kamikaze", 1, 1));
-// 	// printf("%s\n", ft_substr("kamikaze", 1, 9));
-// 	// printf("%s\n", ft_substr("kamikaze", 8, 8));
-// 	// printf("%s\n", ft_substr("", 0, 0));
-// 	// printf("%s\n", ft_substr("kamikaze", 0, 1));
-// 	// printf("%s\n", ft_substr("i just want this part #############", 5, 20));
-// }

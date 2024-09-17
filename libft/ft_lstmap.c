@@ -6,12 +6,17 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 19:10:15 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/03 14:47:38 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:25:04 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Iterates a list and applies a function f to each node, mapping the output to a new list.
+/// @param lst Pointer to the list to iterate and map.
+/// @param f Void pointer to the function f to map the nodes with.
+/// @param del Void pointer to a function that deletes the old memory addresses of the old list.
+/// @return Pointer to the new list created, whose nodes are mapped from the previous list.
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_list;
@@ -37,30 +42,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (new_list);
 }
-
-// void *map(void *content)
-// {
-//     char *str = (char *)content;
-//     char *new_str = ft_strtrim(str, "Jo"); 
-
-//     if (!new_str)
-//         return (NULL);
-
-//     return (new_str);
-// }
-
-// int main (void)
-// {
-// 	t_list	*lst = ft_lstnew("Joao ");
-// 	t_list	*ret;
-
-// 	lst->next = ft_lstnew("Sobreira");
-// 	lst->next->next = ft_lstnew(" Barbot");
-// 	ret = ft_lstmap(lst, &map, ft_lstdelone);
-
-// 	while (ret)
-// 	{
-// 		printf("%s", ret->content);
-// 		ret = ret->next;
-// 	}
-// }

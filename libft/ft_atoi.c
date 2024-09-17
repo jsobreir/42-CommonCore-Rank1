@@ -6,12 +6,15 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:42:56 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/12 15:46:58 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:00:46 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Convert a string of numbers to int type.
+/// @param nptr Pointer-like string of numbers.
+/// @return Converted integer.
 int	ft_atoi(const char *nptr)
 {
 	int	result;
@@ -35,27 +38,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (sign * result);
 }
-
-// int main(void)
-// {
-// 	printf("%d\n", ft_atoi("	5748g"));
-// 	printf("%d\n", atoi("	5748g"));
-// 	printf("\n");
-// 	printf("%d\n", ft_atoi("  - 5748g"));
-// 	printf("%d\n", atoi("  - 5748g"));
-// 	printf("\n");
-// 	printf("%d\n", ft_atoi("++5748g"));
-// 	printf("%d\n", atoi("++5748g"));
-// 	printf("\n");
-// 	printf("%d\n", ft_atoi("+-5d748g"));
-// 	printf("%d\n", atoi("+-5d748g"));
-// 	printf("\n");
-// 		printf("%d\n", ft_atoi("\v5748"));
-// 	printf("%d\n", atoi("\v5748"));
-// 	printf("\n");
-// 		printf("%d\n", ft_atoi("-5748"));
-// 	printf("%d\n", atoi("-5748"));
-// 	printf("\n");
-// 		printf("%d\n", ft_atoi("57s48g"));
-// 	printf("%d\n", atoi("57s48g"));
-// } 

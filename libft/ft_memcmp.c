@@ -6,13 +6,18 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:44:21 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/24 14:05:19 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:26:53 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
+/// @brief Compares the values stored at two memory locations.
+/// @param s1 Pointer to a memory location.
+/// @param s2 Pointer to a memory location.
+/// @param n Number of elements to compare.
+/// @return Returns the difference between the elements in the first and second memory blocks, if they differ. Otherwise, returns NULL.
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	size_t			i;
@@ -32,18 +37,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-// int main(void)
-// {
-// 	// const void *str1 = "Joa", *str2 = "Joao";
-// 	// printf("%d\n", ft_memcmp(str1, str2, 3));
-// 	// printf("%d\n", memcmp(str1, str2, 3));
-// 	printf("%d\n", ft_memcmp("sssA", "sssJ", 4));
-// 	// printf("%d\n", memcmp("sssA", "sssJ", 4));
-// 	printf("%d\n", ft_memcmp("sssJ", "sssA", 4));
-// 	// printf("%d\n", memcmp("sssJ", "sssA", 4));
-// // 	printf("%d\n", ft_memcmp("J", "A", 0));
-// // 	printf("%d\n", memcmp("J", "A", 0));
-// // 	printf("%d\n", ft_memcmp("J", "g\0", 1));
-// // 	printf("%d\n", memcmp("J", "g\0", 1));
-// }

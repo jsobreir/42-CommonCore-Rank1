@@ -6,12 +6,15 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 23:13:37 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/19 10:18:21 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:33:58 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Put an int to a certain fd.
+/// @param n Int to put.
+/// @param fd File descriptor.
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (n == -2147483648)
@@ -31,9 +34,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd('0' + n, fd);
 	}
 }
-
-// int main(void)
-// {
-// 	ft_putnbr_fd(-120, 1);
-// 	write(1, "\n", 1);
-// }

@@ -6,13 +6,19 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:44:35 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/19 18:36:53 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:31:14 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
+/// @brief Copies n bytes from memory area src to memory area dest.  The memory areas may overlap: copying takes place as though the bytes in src are first copied into a temporary array
+/// that does not overlap src or dest, and the bytes are then copied from the temporary array to dest.
+/// @param dest Destination memory block.
+/// @param src Source memory block.
+/// @param n Number of elements to move.
+/// @return Pointer to the destination memory block.
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	int	i;
@@ -39,12 +45,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-// int	main(void)
-// {
-// 	char		*dest;
-// 	const char	*src;
-// 	src = "JodfBart";
-// 	dest = "Joaotdddd";
-// 	printf("%p\n", dest);
-// 	ft_memmove(dest, src, 5);
-// }

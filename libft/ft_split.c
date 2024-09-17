@@ -6,12 +6,16 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 20:08:46 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/05/03 14:21:26 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:35:56 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Split a string into a given delimeter c.
+/// @param s String to split.
+/// @param c Delimiter.
+/// @return Double pointer-like structure containing the splitted elements in different memory blocks.
 static int	count_words(const char *s, char c)
 {
 	int			counter;
@@ -108,29 +112,3 @@ char	**ft_split(char const *s, char c)
 	ret = put_split_words(s, ret, c, counter);
 	return (ret);
 }
-
-// int main(void)
-// {
-// 	char	**ret;
-// 	int 	n;
-// 	int 	j;
-// 	int 	counter;
-// 	char	c = ' ';
-// 	char 	*string = "      split       this for   me  !       ";
-
-// 	ret = ft_split(string, c);
-// 	counter = count_words(string, c);
-
-// 	n = 0;
-// 	while (n < counter)
-// 	{
-// 		j = 0;
-// 		while (ret[n][j] != 0)
-// 		{
-// 			printf("%c", ret[n][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		n++;
-// 	}
-// }

@@ -6,12 +6,15 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 14:53:16 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/23 17:04:12 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:25:00 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Creates a new list.
+/// @param content Content to add to the first node of the list.
+/// @return Pointer to the new list.
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
@@ -23,11 +26,3 @@ t_list	*ft_lstnew(void *content)
 	node->next = NULL;
 	return (node);
 }
-
-// int main (void)
-// {
-// 	void	*content = "Joao";
-// 	void	*content1 = NULL;
-//	printf("%s\n", ft_lstnew(content)->content);
-// 	printf("%s", ft_lstnew(content1)->content);
-// }

@@ -6,13 +6,18 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:45:49 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/23 19:41:22 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 21:16:55 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
+/// @brief Finds the 'little' string inside the 'big'.
+/// @param big String to search inside.
+/// @param little String to look for.
+/// @param len Maximum number of elements in 'big' to look for.
+/// @return Returns a pointer to the first position of the 'big' string, where 'little' was found. If not found, returns '\0'.
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
@@ -36,24 +41,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-
-// #include <string.h>
-// int main(void)
-// {
-// 	const char *big;
-// 	const char *little;
-
-// 	big = "Ola eu sou o Joao";
-// 	little = "Olaa";
-// 	// printf("%s%s\n", "1: Ola eu sou o Joao: ", ft_strnstr(big, "Olaa", 2));
-// 	// printf("%s%s\n", "2: Ola eu sou o Joao: ", ft_strnstr(big, "Ola", 2));
-// 	// printf("%s%s\n", "3: Ola eu sou o Joao: ", ft_strnstr(big, "Ola", 4));
-// 	// printf("%s%s\n", "4: Joao: ", ft_strnstr(big, "Joao", 40));
-// 	// printf("%s%s\n", "5: Null: ", ft_strnstr(big, "Joao", 2));
-// 	// printf("%s%s\n", "6: Null: ", ft_strnstr(big, "Joao", 3));
-// 	// printf("%s%s\n", "7: Ola eu sou o Joao: ", ft_strnstr(big, "", 3));
-// 	// printf("%s%s\n", "8: Null: ", ft_strnstr(big, "Ola", 0));
-// 	// printf("%s%s\n", "9: Null: ", ft_strnstr(big, "eu", 3));
-// 	// printf("%s%s\n", "10: Null: ", ft_strnstr(big, "eue", 3));
-// 	printf("%s", ft_strnstr("wqqwdqw", "", 0));
-// }

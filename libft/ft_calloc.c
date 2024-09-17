@@ -6,12 +6,16 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 17:32:52 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/23 16:37:53 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:03:54 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief Allocs a block of memory and sets it's values to zero.
+/// @param nmemb Size of the block of memory.
+/// @param size Size of the values to be stored.
+/// @return Returns a pointer to the memory address of the allocated block.
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ret;

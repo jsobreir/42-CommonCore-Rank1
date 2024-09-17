@@ -6,13 +6,16 @@
 /*   By: jsobreir <jsobreir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:45:18 by jsobreir          #+#    #+#             */
-/*   Updated: 2024/04/24 12:56:49 by jsobreir         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:37:32 by jsobreir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
+/// @brief Allocates space for a duplicate of a string s. Dublicates to that space.
+/// @param s String to duplicate.
+/// @return Pointer to the duplicate string.
 char	*ft_strdup(const char *s)
 {
 	char	*ret;
@@ -33,11 +36,3 @@ char	*ft_strdup(const char *s)
 	ret[i] = '\0';
 	return (ret);
 }
-
-// int main(void)
-// {
-// 	printf("%s\n", ft_strdup("Joao"));
-// 	printf("%s\n", strdup("Joao"));
-// 	printf("%s\n", ft_strdup(""));
-// 	printf("%s\n", strdup(""));
-// }
